@@ -1,16 +1,35 @@
 import React, { Component } from "react";
-import { StackNavigator } from "react-navigation";
+import { StackNavigator, TabNavigator,TabBarBottom } from "react-navigation";
 import DummyPage from "./DummyPage";
 import Todo from "./Todo";
 import AddTodo from "./AddTodo";
+import MyModal from './MyModal';
+import Ionicons from "@expo/vector-icons";
 
-export const RootStack = StackNavigator(
+export const TabTodo = TabNavigator(
+  {
+    Dummy : {screen : DummyPage},
+    Todo : {screen : Todo}
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: 'black',
+      inactiveTintColor: 'gray',
+    },
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+    animationEnabled: false,
+    swipeEnabled: false,
+  }
+)
+
+export const MainStack = StackNavigator(
   {
     Todo: {
       screen: Todo
     },
     Dummy: {
-      screen: DummyPage
+      screen: TabTodo
     },
     AddTodo: {
       screen: AddTodo
@@ -19,6 +38,7 @@ export const RootStack = StackNavigator(
 
   {
     initialRouteName: "Dummy",
+    // for common navigationOptions across screens
     navigationOptions: {
       headerStyle: {
         backgroundColor: "#102951"
@@ -28,5 +48,23 @@ export const RootStack = StackNavigator(
         fontWeight: "bold"
       }
     }
+  },
+);
+
+
+
+export const RootStack = StackNavigator(
+  {
+    Main : {
+      screen : MainStack
+    },
+    MyModal : {
+      screen : MyModal
+    }
+  },
+  {
+    mode : 'modal',
+    headerMode : 'none'
   }
+
 );
