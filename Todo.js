@@ -5,7 +5,8 @@ import {
   View,
   FlatList,
   SectionList,
-  Button
+  Button,
+  ScrollView
 } from "react-native";
 import {
   TouchableOpacity,

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StackNavigator, TabNavigator,TabBarBottom } from "react-navigation";
 import DummyPage from "./DummyPage";
+import Dummy2 from "./Dummy2";
 import Todo from "./Todo";
 import AddTodo from "./AddTodo";
 import MyModal from './MyModal';
@@ -18,7 +19,7 @@ export const TabTodo = TabNavigator(
     },
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
-    animationEnabled: false,
+    animationEnabled: true,
     swipeEnabled: false,
   }
 )
@@ -33,6 +34,9 @@ export const MainStack = StackNavigator(
     },
     AddTodo: {
       screen: AddTodo
+    },
+    Dummy2 : {
+      screen : Dummy2
     }
   },
 

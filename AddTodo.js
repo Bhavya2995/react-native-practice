@@ -4,7 +4,8 @@ import {
   Text,
   TextInput,
   KeyboardAvoidingView,
-  StyleSheet
+  StyleSheet,
+  ToolbarAndroid
 } from "react-native";
 import { Button } from "react-native";
 import LogoTitle from "./LogoTitle";
@@ -18,14 +19,14 @@ export default class AddTodo extends React.Component {
     };
   }
   static navigationOptions = ({ navigation, navigationOptions }) => {
-    const  params  = navigation.state.params || {};
+    const params = navigation.state.params || {};
     return {
       // title : params.title ? params.title : "Add Something",
       headerTitle: <LogoTitle />,
       // headerTitle for component and it is specific to StackNavigator
       headerRight: (
         <Button onPress={params.increaseCount} title="+1" color="skyblue" />
-      ),
+      )
       // Logo as component
       // headerBackImage : require('./images/logo.png')
       // Overriding default back icon
@@ -42,6 +43,8 @@ export default class AddTodo extends React.Component {
   _onChangeText = text => this.setState({ text });
 
   _increaseCount = () => this.setState({ count: this.state.count + 1 });
+
+  onActionSelected(position) {}
 
   render() {
     const { params } = this.props.navigation.state;
@@ -68,8 +71,8 @@ export default class AddTodo extends React.Component {
           color="#4fa4ff"
           accessibilityLabel="Submit button"
         />
-        <View style = {styles.button} >
-        {/* <Button
+        <View style={styles.button}>
+          {/* <Button
           onPress={() => {
             this.props.navigation.setParams({title:"Add Todo"})
           }}
@@ -77,7 +80,16 @@ export default class AddTodo extends React.Component {
           color="#4fa4ff"
           accessibilityLabel="Update Title"
         /> */}
-        <Text>Counter: {this.state.count}</Text>
+          <Text>Counter: {this.state.count}</Text>
+        </View>
+        <View style={styles.button}>
+          <Button
+            onPress={() => {
+              this.props.navigation.navigate("Dummy2");
+            }}
+            title="Click Me"
+            color="skyblue"
+          />
         </View>
       </KeyboardAvoidingView>
     );
