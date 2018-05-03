@@ -7,7 +7,9 @@ import {
   Slider,
   Switch,
   DrawerLayoutAndroid,
-  Text
+  Text,
+  Modal,
+  TouchableHighlight
 } from "react-native";
 import { DatePickerAndroid } from "react-native";
 import { TimePickerAndroid } from "react-native";
@@ -157,6 +159,50 @@ export default class Dummy2 extends React.Component {
           onValueChange={() => this.showToast()}
           value={this.state.show}
         />
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            alert("Modal has been closed.");
+          }}
+        >
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <View
+              style={{
+                width: 300,
+                height: 400,
+                backgroundColor: "#4f92ff",
+                borderRadius: 5
+              }}
+            >
+              <Text>Hello World!</Text>
+
+              <TouchableHighlight
+                onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible);
+                }}
+              >
+                <Text>Hide Modal</Text>
+              </TouchableHighlight>
+            </View>
+          </View>
+        </Modal>
+
+        <TouchableHighlight
+          onPress={() => {
+            this.setModalVisible(true);
+          }}
+        >
+          <Text>Show Modal</Text>
+        </TouchableHighlight>
       </View>
     );
   }
