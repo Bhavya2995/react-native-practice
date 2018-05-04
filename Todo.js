@@ -15,7 +15,6 @@ import {
 } from "react-native";
 import ListItem from "./ListItem";
 import AddTodo from "./AddTodo";
-import Expo from "expo";
 
 export default class Todo extends React.Component {
   constructor() {

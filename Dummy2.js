@@ -20,13 +20,18 @@ export default class Dummy2 extends React.Component {
   constructor() {
     super();
     this.state = {
-      show: false
+      show: false,
+      modalVisible: false
     };
     this.showToast = this.showToast.bind(this);
   }
   static navigationOptions = {
     title: "Toolbar Example"
   };
+
+  setModalVisible(visible) {
+    this.setState({ modalVisible: visible });
+  }
   navigationView() {
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
@@ -91,7 +96,7 @@ export default class Dummy2 extends React.Component {
   render() {
     return (
       <View style={styles.containerToolbar}>
-        <DrawerLayoutAndroid
+        {/* <DrawerLayoutAndroid
           drawerWidth={300}
           drawerPosition={DrawerLayoutAndroid.positions.Left}
           renderNavigationView={this.navigationView}
@@ -104,7 +109,7 @@ export default class Dummy2 extends React.Component {
               World!
             </Text>
           </View>
-        </DrawerLayoutAndroid>
+        </DrawerLayoutAndroid> */}
         <ToolbarAndroid
           style={styles.toolbar}
           //   navIcon={require("./images/logo.png")}
@@ -178,31 +183,33 @@ export default class Dummy2 extends React.Component {
             <View
               style={{
                 width: 300,
-                height: 400,
-                backgroundColor: "#4f92ff",
+                height: 500,
+                backgroundColor: "#fff",
                 borderRadius: 5
               }}
             >
               <Text>Hello World!</Text>
 
-              <TouchableHighlight
-                onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
-                }}
-              >
-                <Text>Hide Modal</Text>
-              </TouchableHighlight>
+              <View style={styles.button}>
+                <Button
+                  onPress={() => {
+                    this.setModalVisible(!this.state.modalVisible);
+                  }}
+                  title="Hide Modal"
+                />
+              </View>
             </View>
           </View>
         </Modal>
 
-        <TouchableHighlight
-          onPress={() => {
-            this.setModalVisible(true);
-          }}
-        >
-          <Text>Show Modal</Text>
-        </TouchableHighlight>
+        <View style={styles.button}>
+          <Button
+            onPress={() => {
+              this.setModalVisible(true);
+            }}
+            title="Show Modal"
+          />
+        </View>
       </View>
     );
   }

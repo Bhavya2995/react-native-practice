@@ -32,7 +32,7 @@ export default class DummyPage extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor="fuchsia" barStyle="light-content" />
+        <StatusBar backgroundColor="skyblue" barStyle="light-content" />
         <View
           style={{ width: 50, height: 50, backgroundColor: "powderblue" }}
         />

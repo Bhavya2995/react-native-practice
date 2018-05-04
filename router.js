@@ -5,7 +5,6 @@ import Dummy2 from "./Dummy2";
 import Todo from "./Todo";
 import AddTodo from "./AddTodo";
 import MyModal from './MyModal';
-import Ionicons from "@expo/vector-icons";
 
 export const TabTodo = TabNavigator(
   {

@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { Button } from "react-native";
 import LogoTitle from "./LogoTitle";
+import { ToastAndroid } from "react-native";
+
 export default class AddTodo extends React.Component {
   constructor() {
     super();
@@ -66,6 +68,7 @@ export default class AddTodo extends React.Component {
             params.handleAddTodo(this.state.text);
             this.textInput.current.clear();
             this.textInput.current.blur();
+            ToastAndroid.show("Todo added",ToastAndroid.LONG);
           }}
           title="Submit"
           color="#4fa4ff"
